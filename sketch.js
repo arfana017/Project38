@@ -29,7 +29,7 @@ function setup() {
   monkey = createSprite(100,300);
   monkey.scale = 0.15;
   monkey.addAnimation("monkey",monkey_running);
-  monkey.x = camera.position.x
+  monkey.x = camera.position.x+100
   monkey.y = camera.position.y
 
   ground = createSprite(300,350,600,10);
