@@ -11,7 +11,8 @@ var gameState = PLAY;
 
 function preload(){
   
-  
+  bg = loadImage("AnimatedForestBackground.jpg");
+
   monkey_running = loadAnimation("sprite_0.png","sprite_1.png","sprite_2.png","sprite_3.png","sprite_4.png","sprite_5.png","sprite_6.png","sprite_7.png","sprite_8.png")
   
   monkeyStop = loadImage("sprite_0.png");
@@ -29,10 +30,11 @@ function setup() {
   monkey = createSprite(100,300);
   monkey.scale = 0.15;
   monkey.addAnimation("monkey",monkey_running);
-  monkey.x = camera.position.x
+  monkey.x = camera.position.x+100
   monkey.y = camera.position.y
 
-  ground = createSprite(300,350,600,10);
+  ground = createSprite(300,370,600,10);
+  ground.visible = false;
   
   FoodGroup = createGroup();
   obstacleGroup = createGroup();
@@ -41,10 +43,13 @@ function setup() {
 
 
 function draw() {
-  background("lightgreen");
+  //background();
+  imageMode(CENTER)
+  image(bg,300,200,600,400)
   
   textSize(30);
-  text("Score: " + score,400,100);
+  fill("darkgreen")
+  text("Score: " + score,450,50);
   
   if (gameState === PLAY) {
 
@@ -119,7 +124,7 @@ function spawnBanana() {
 function spawnObstacles() {
   
   if (frameCount % 300 === 0){
-   var obstacle = createSprite(600,310,10,40);
+   var obstacle = createSprite(600,335,10,40);
     obstacle.addImage(obstacleImage);
    obstacle.velocityX = -(6 + score/100);
            
